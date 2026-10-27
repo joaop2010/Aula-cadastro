@@ -1,28 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FETEC</title>
-    <link rel="stylesheet" href="style.css">
+    <title>FETEC . Turmas</title>
+    <link rel="stylesheet" href="turma.css">
 </head>
 <body>
     <header>
-        <div id="menu">
-            <button>≡</button>
+            <button class="icon-btn menu-btn" id="menu" arial-label="Abrir menu" title="Menu">
+               <svg>
+
+               </svg>
+            </button>
+             <div id="logo">
+            <h1 class="brand">FETEC</h1>
         </div>
-        <div id="logo">
-            <h1>FETEC</h1>
+       
+        <div class="avatar-wrap" id="avatar">
+            <button class="avatar-btn" id="btnAvatar" aria-label="Perfil" title="Perfil" aria-haspopup="true" aria-expanded="false">AV</button>
         </div>
-        <div id="avatar">
-            <button>👤</button>
+        <div class="avatar-menu">
+            <button type="button" class="avatar-menu-item"
+            data-action="perfil">Perfil</button>
+            <button type="button" class="avatar-menu-item"
+            data-action="config">Configurações</button>
+            <hr class="avatar-menu-divider">
+            <button type="button" class="avatar-menu-item avatar-menu-logout"
+            data-action="logout">Sair</button>
         </div>
     </header>
     
+    <nav class="side-menu" id="sideMenu" aria-hidden="true">
+        <ul>
+            <li><a href="#" class="active">Turmas</a></li>
+            <li><a href="#">Alunos</a></li>
+            <li><a href="#">Usuários</a></li>
+            <li><a href="#">Sair</a></li>
+        </ul>
+    </nav> 
+    <div class="side-menu-overlay" id="sideMenuOverlay"></div>
+
     <br>
     
-    <main>
+    <main class="content">
+        <section class="turmas-header">
+            <h2>Turmas</h2>
+            <button class="icon-btn btn-add" id="btnAdd" aria-label="Adicionar Turma" title="Adicionar Turma">
+                <svg viewBox="0 0 24 24" width="22" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+            </button>
+        </section>
+        <ul class="turmas-list" id="turmasList"></ul>
+        <p class="empety-state" id="empetyState" hidden> Nenhuma turma cadastrada. Clique em <strong>+</strong> para criar a primeira turma.</p>
 
-    <script src="script.js"></script>
+        <!-- MODAL: Adicionar Turma -->
+         <div class="modal-overlay" id="modalOverlay">
+            <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTrue">
+                <button class="modal-close" id="btnModalClose" aria-label="Fechar">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="5" x2="19" y2="19"></line>
+                    <line x1="19" y1="5" x2="5" y2="19"></line>
+                </svg>
+                </button>
+                <h3 class="modal-title" id="modalTitle">Nova Turma</h3>
+                <form id="turmaForm" novalidate>
+                    <input type="hidden" id="turmaId">
+                    <label class="field">
+                        <span>Nome</span>
+                        <input type="text" id="inputNome" placeholder="Ex:DS" required maxlength="40">
+                    </label>
+                    <label class="field">
+                        <span>Série</span>
+                        <select id="inputSerie" required>
+                            <option value="">Selecione...</option>
+                            <option value="1º Ano">1º </option>
+                            <option value="2º Ano">2º </option>
+                            <option value="3º Ano">3º </option>
+                        </select>
+                    </label>
+                    <label class="field">
+                        <span>Divisão</span>
+                        <span class="checkbox-row">
+                            <input type="checkbox" id="inputDivisao">
+                            <span class="chekbox-row-label">A/B</span>
+                        </span>
+                    </label>
+
+                    <div class="modal-actions">
+                        <button type="submit" class="btn btn-primary" id="btnSave">Salvar</button>
+                        <button type="button" class="btn btn-secondary" id="btnCancelar">Cancelar</button>
+
+                </form>
+            </div>
+        </div>
+
+        <div class="modal-overlay" id="delete-overlay" hidden>
+            <div class="modal modal-small" role="dialog" aria-modal="true" aria-labelledby="deleteTitle">
+                <h3 class="modal-title" id="deleteTitle">Excluir Turma</h3>
+                <p class="modal-text" id="deleteText">Tem certeza que deseja excluir esta turma?</p>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-danger" id="btnConfirmDelete">Excluir</button>
+                    <button type="button" class="btn btn-secondary" id="btnCancelDelete">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+    <script src="turma.js"></script>
 </body>
 </html>

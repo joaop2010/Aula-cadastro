@@ -1,0 +1,314 @@
+:root{
+    --primary: #4f46e5;
+    --primary-dark: #4338ca;
+    --danger: #dc2626;
+    --danger-dark: #b91c1c;
+    --bd: #f4f5fa;
+    --surface: #ffffff;
+    --text: #1f2433;
+    --text-muted: #6b7280;
+    --border: #e3e5ec;
+    --radius: 12px;
+    --top-bar-h: 60px;
+    z-index: 0;
+}
+*{box-sizing: border-box;}
+
+body{
+    margin:0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--bd);
+    color: var(--text);
+}
+
+/* TOP BAR */
+.top-bar{
+    position: sticky;
+    top: 0;
+    height: var(--top-bar-h);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 16px;
+    background-color: var(--surface);
+    border-bottom: 1px solid var(--border);
+}
+
+.brand{
+    flex: 1;
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: 0.5px;
+}
+
+.icon-btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: none;
+    background: transparent;
+    color: var(--text);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+icon-btn:hover{
+    background: var(--bg);
+}
+.avatar-wrap{
+    position: relative;
+}
+
+.avatar-btn{
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--primary);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.avatar-menu{
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 180px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    z-index: 40;
+}
+
+.avatar-menu-item{
+    text-align: left;
+    border: none;
+    background: transparent;
+    color: var(--text);
+    font: inherit;
+    font-size: 0.9rem;
+    padding: 8px 10px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+.avatar-menu-item:hover{background: var(--bg);}
+
+.avatar-menu-logout{color: var(--danger);}
+.avatar-menu-logout:hover{background: #fef2f2;}
+
+.avatar-menu-divider{
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 6px 2px;
+}
+.side-menu{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 220px;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    padding: calc(var(--top-bar-h) + 16px) 0 16px;
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
+    z-index: 30;
+}
+
+.side-menu.open{
+    transform: translateX(0);
+}
+.side-menu ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.side-menu a{
+    display: block;
+    padding: 12px 24px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.side-menu a:hover{
+    background: var(--bg);
+}
+
+.side-menu a.active{
+    background: var(--primary);
+    font-weight: 600;
+}
+.side-menu-overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 17, 26, 0.35);
+    z-index: 20;
+    display: none;
+}
+.side-menu-overlay.open{
+    display: block;
+}
+
+.content{
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 24px 16px 60px;
+}
+.turmas-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.turmas-header h2{
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+.btn-add:hover{
+    background: var(--primary-dark);
+}
+
+.turmas-list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.turmas-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 14px 16px;
+}
+
+.turma-name{
+    font-weight: 600;
+    font-size: 0.98rem;
+}
+
+.turma-actions{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.action-btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--border);
+    
+    color: var(--text-muted);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s;
+}  
+
+.action-btn:hover{
+    background: var(--bg);
+    color: var(--text);
+}
+.action-btn.action-delete:hover{
+    background: #fef2f2;
+    color: var(--danger);
+    border-color: #efcaca;
+}
+
+.empty-state{
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-top: 40px;
+}
+
+.modal-overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 17, 26, 0.45);
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.modal-overlay[hidden]{
+    display: none;
+}
+.modal{
+    position: relative;
+    width: 100%;
+    max-width: 360px;
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: 0 20px 50px rgba(15, 17, 16, 0.25);
+}
+
+.modal-small{
+    max-width: 320px;
+}
+
+.modal-close{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover{
+    background: var(--bg);
+    color: var(--text);
+}
+
+.modal-title{
+    margin: 0 0 180px;
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.modal-text{
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin: -8px 0 18px;
+}
+
+.field{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 14px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
